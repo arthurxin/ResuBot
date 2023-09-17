@@ -3,13 +3,14 @@ import subprocess
 from langchain.document_loaders import PyMuPDFLoader
 from llm_functions import summary_jd
 from llm_functions import revise_resume
+import os
 
 def main(api_key, user_path):
     # st.header("My Website")
     # st.subheader("Data Analytics")
     # st.text("Simple text")
     
-    subprocess.run("PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers python -m playwright install")
+    os.system("python -m playwright install")
 
     uploaded_file = st.file_uploader("Upload your resume", accept_multiple_files=False)
     filename = user_path + "/origintresume.pdf"
