@@ -10,7 +10,7 @@ def main(api_key, user_path):
     # st.subheader("Data Analytics")
     # st.text("Simple text")
     
-    os.system("python -m playwright install")
+    os.system("playwright install")
 
     uploaded_file = st.file_uploader("Upload your resume", accept_multiple_files=False)
     filename = user_path + "/origintresume.pdf"
