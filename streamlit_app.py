@@ -2,7 +2,6 @@ import streamlit as st
 from streamlit_features import main
 from tempfile import TemporaryDirectory
 
-    
 st.header("ResuBot")
 st.subheader("revising user's resume to match the requirements and expectations of a specific job website url")
 st.text("1.upload your resume")

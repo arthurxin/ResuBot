@@ -2,6 +2,8 @@ from langchain.chat_models import ChatAnthropic
 from langchain.schema import AIMessage, HumanMessage, SystemMessage
 from langchain.document_loaders import PlaywrightURLLoader
 
+playwright install
+
 def read_url(url):
     loader = PlaywrightURLLoader(urls=[url], remove_selectors=["header", "footer"])
     data = loader.load()
