@@ -42,8 +42,8 @@ def main(api_key, user_path):
     col1, col2, col3, col4= st.columns(4)
     with col1:
         if st.button("Generate"):
-            jd = summary_jd(st.session_state["job_url"])
-            new_resume_latex = revise_resume(st.session_state["originresume"], jd, st.session_state['latex_templet'])
+            jd = summary_jd(api_key, st.session_state["job_url"])
+            new_resume_latex = revise_resume(api_key, st.session_state["originresume"], jd, st.session_state['latex_templet'])
             new_resume_latex = new_resume_latex.split("\documentclass")[-1].split("\end{document}")[0]
             new_resume_latex = '\documentclass' + new_resume_latex + '\end{document}'
             filename = user_path +'/new_resume_latex.tex'

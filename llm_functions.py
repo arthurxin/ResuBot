@@ -1,4 +1,3 @@
-import utility
 from langchain.chat_models import ChatAnthropic
 from langchain.schema import AIMessage, HumanMessage, SystemMessage
 from langchain.document_loaders import PlaywrightURLLoader
@@ -10,9 +9,9 @@ def read_url(url):
     page_content = data['page_content']
     return page_content
 
-def summary_jd(url):
+def summary_jd(api_key,url):
     url_content = read_url(url)
-    my_key = utility.get_claude_key()
+    my_key = api_key
     chat = ChatAnthropic(model="claude-2", anthropic_api_key = my_key, max_tokens_to_sample=1000)
     messages = [
         HumanMessage(
@@ -21,8 +20,8 @@ def summary_jd(url):
     ]
     return dict(chat(messages))["content"]
 
-def revise_resume(resume, jd, latex_templet):
-    my_key = utility.get_claude_key()
+def revise_resume(api_key,resume, jd, latex_templet):
+    my_key = api_key
     chat = ChatAnthropic(model="claude-2", anthropic_api_key = my_key, max_tokens_to_sample=2000)
     messages = [
         HumanMessage(
