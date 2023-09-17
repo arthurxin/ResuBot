@@ -54,8 +54,9 @@ def main(api_key, user_path):
                 fout.write(new_resume_latex)
                 
             subprocess.run(['pdflatex', '-interaction=nonstopmode', filename])
-            # filename = user_path + '/new_resume_latex.pdf'
+            filename = user_path + '/new_resume_latex.pdf'
             # subprocess.run("mv new_resume_latex.pdf " + filename)
+            os.system("mv new_resume_latex.pdf " + filename)
             
             st.toast('Mission Complete!')
             st.session_state.generated = True
@@ -65,7 +66,7 @@ def main(api_key, user_path):
             if st.session_state.generated == False:
                 raise Exception("Sorry, you should generate you resume first.")
             else:
-                with open('new_resume_latex.pdf', 'rb') as resume:
+                with open(filename, 'rb') as resume:
                     st.download_button('Download resume', resume, "Resume.pdf")
         except:
             st.warning("resume not ready, please generate")
